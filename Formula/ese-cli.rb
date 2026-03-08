@@ -7,6 +7,7 @@ class EseCli < Formula
   sha256 "4c328f8bb5004a396b783e6eef58e59d57104d0dba5852f7a9b3ba4153cd5229"
   license "MIT"
 
+  conflicts_with "ese", because: "both install an `ese` executable"
   depends_on "rust" => :build
   depends_on "libyaml"
   depends_on "python@3.12"
