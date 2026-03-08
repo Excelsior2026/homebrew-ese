@@ -7,6 +7,7 @@ class EseCli < Formula
   sha256 "4c328f8bb5004a396b783e6eef58e59d57104d0dba5852f7a9b3ba4153cd5229"
   license "MIT"
 
+  depends_on "rust" => :build
   depends_on "libyaml"
   depends_on "python@3.12"
 
@@ -33,6 +34,11 @@ class EseCli < Formula
   resource "mdurl" do
     url "https://files.pythonhosted.org/packages/d6/54/cfe61301667036ec958cb99bd3efefba235e65cdeb9c84d24a8293ba1d90/mdurl-0.1.2.tar.gz"
     sha256 "bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba"
+  end
+
+  resource "maturin" do
+    url "https://files.pythonhosted.org/packages/ef/e8/5f7fd3763f214a77ac0388dbcc71cc30aec5490016bd0c8e6bd729fc7b0a/maturin-1.12.6-py3-none-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl"
+    sha256 "c0c742beeeef7fb93b6a81bd53e75507887e396fd1003c45117658d063812dad"
   end
 
   resource "prompt-toolkit" do
@@ -96,7 +102,17 @@ class EseCli < Formula
   end
 
   def install
-    virtualenv_install_with_resources
+    venv = virtualenv_create(libexec, "python3.12")
+
+    venv.pip_install resources.reject { |r| %w[maturin pydantic-core].include?(r.name) }
+
+    resource("maturin").stage do
+      venv.pip_install Pathname.pwd/resource("maturin").downloader.basename
+    end
+
+    ENV.prepend_path "PATH", venv.root/"bin"
+    venv.pip_install resource("pydantic-core"), build_isolation: false
+    venv.pip_install_and_link buildpath
   end
 
   def caveats
