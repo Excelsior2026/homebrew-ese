@@ -9,6 +9,12 @@ brew tap Excelsior2026/ese https://github.com/Excelsior2026/homebrew-ese
 brew install ese-cli
 ```
 
+To install the latest code from `main` instead of the latest published package:
+
+```bash
+brew reinstall --HEAD ese-cli
+```
+
 If you previously installed the older `excelsior2026/tap/ese` formula, remove or unlink it first:
 
 ```bash

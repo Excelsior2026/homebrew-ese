@@ -6,11 +6,12 @@ class EseCli < Formula
   url "https://files.pythonhosted.org/packages/1b/e2/47fbbc3e5a367809e7f311dbb519802f17600f780927ad72e8c59121328a/ese_cli-1.0.0.tar.gz"
   sha256 "4c328f8bb5004a396b783e6eef58e59d57104d0dba5852f7a9b3ba4153cd5229"
   license "MIT"
+  head "https://github.com/Excelsior2026/ensemble-software-engineering.git", branch: "main"
 
-  conflicts_with "ese", because: "both install an `ese` executable"
   depends_on "rust" => :build
   depends_on "libyaml"
   depends_on "python@3.12"
+  conflicts_with "ese", because: "both install an `ese` executable"
 
   resource "annotated-doc" do
     url "https://files.pythonhosted.org/packages/57/ba/046ceea27344560984e26a590f90bc7f4a75b06701f653222458922b558c/annotated_doc-0.0.4.tar.gz"
