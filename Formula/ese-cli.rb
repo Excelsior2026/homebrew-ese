@@ -3,8 +3,8 @@ class EseCli < Formula
 
   desc "Ensemble Software Engineering task-first CLI and dashboard"
   homepage "https://github.com/Excelsior2026/ensemble-software-engineering"
-  url "https://files.pythonhosted.org/packages/1b/e2/47fbbc3e5a367809e7f311dbb519802f17600f780927ad72e8c59121328a/ese_cli-1.0.0.tar.gz"
-  sha256 "4c328f8bb5004a396b783e6eef58e59d57104d0dba5852f7a9b3ba4153cd5229"
+  url "https://files.pythonhosted.org/packages/02/ef/ecc8ce212d8eff70de6da2360e4f116093885c50b1e67e1dcdd6fb06d9e6/ese_cli-1.0.1.tar.gz"
+  sha256 "c8b6ffa84e63d21169925e1a81df37faf772b12349859c68c1e240b1308348f2"
   license "MIT"
   head "https://github.com/Excelsior2026/ensemble-software-engineering.git", branch: "main"
 
