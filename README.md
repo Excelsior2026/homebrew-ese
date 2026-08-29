@@ -1,5 +1,7 @@
 # homebrew-ese
 
+_A BagelTech project._
+
 Homebrew tap for Ensemble Software Engineering.
 
 Install:
